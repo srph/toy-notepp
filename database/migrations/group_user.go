@@ -14,5 +14,5 @@ func MigrateGroupUser() {
 }
 
 func DropGroupUser() {
-	Instance.MustExec("DROP TABLE IF EXISTS users")
+	Instance.MustExec("DROP TABLE IF EXISTS group_user")
 }
