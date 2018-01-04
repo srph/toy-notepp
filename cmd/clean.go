@@ -14,5 +14,8 @@ var DbClean = cli.Command{
 func runDbClean(c *cli.Context) error {
 	migrations.DropUsers()
 	migrations.DropPosts()
+	migrations.DropComments()
+	migrations.DropGroups()
+	migrations.DropGroupUser()
 	return nil
 }

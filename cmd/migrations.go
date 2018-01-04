@@ -14,5 +14,8 @@ var DbMigration = cli.Command{
 func runMigrations(c *cli.Context) error {
 	migrations.MigrateUsers()
 	migrations.MigratePosts()
+	migrations.MigrateComments()
+	migrations.MigrateGroups()
+	migrations.MigrateGroupUser()
 	return nil
 }
