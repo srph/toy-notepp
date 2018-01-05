@@ -8,11 +8,6 @@ start:
 	go run main.go web
 .PHONY: start
 
-start.bcrypt:
-	@echo "[FAILBOOK] Starting testbcrypt..."
-	go run test/testbcrypt.go
-.PHONY: start.bcrypt
-
 db.migrate:
 	@echo "[FAILBOOK] Running migrations"
 	go run main.go db:migrate
