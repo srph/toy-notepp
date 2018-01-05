@@ -26,4 +26,4 @@ db.clean:
 db.seed:
 	@echo "[FAILBOOK] Seeding database data..."
 	go run main.go db:seed
-.PHONY: db.clean
+.PHONY: db.seed

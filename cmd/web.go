@@ -3,6 +3,7 @@ package cmd
 import (
 	"gopkg.in/urfave/cli.v1"
 	"gopkg.in/macaron.v1"
+	"github.com/srph/failbook/models"
 )
 
 var Web = cli.Command{
@@ -19,20 +20,23 @@ var Web = cli.Command{
 }
 
 func runWeb(c *cli.Context) error {
+	models.Init()
 	m := macaron.Classic()
-	m.Get("/", home)
 	m.Use(macaron.Logger())
 	m.Use(macaron.Recovery())
 	m.Use(macaron.Static("public"))
 	m.Use(macaron.Renderer())
+	m.Get("/", home)
 	m.Run()
 	return nil
 }
 
 func home(ctx *macaron.Context) {
+	users := []models.User{}
+	models.Instance.Find(&users)
+
 	response := map[string]interface{}{
-		"pogi": "kier",
-		"age": 69,
+		"data": users,
 	}
 
 	ctx.JSON(200, response)

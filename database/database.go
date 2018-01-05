@@ -5,4 +5,4 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-var Instance *sqlx.DB = sqlx.MustConnect("mysql", "root@tcp(localhost)/" + "failbook")
+var Instance *sqlx.DB = sqlx.MustConnect("mysql", "root@tcp(localhost)/failbook")
