@@ -15,6 +15,7 @@ func main() {
 		cmd.Web,
 		cmd.DbMigration,
 		cmd.DbClean,
+		cmd.DbSeed,
 	}
 	app.Run(os.Args)
 }

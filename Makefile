@@ -22,3 +22,8 @@ db.clean:
 	@echo "[FAILBOOK] Dropping migrations"
 	go run main.go db:clean
 .PHONY: db.clean
+
+db.seed:
+	@echo "[FAILBOOK] Seeding database data..."
+	go run main.go db:seed
+.PHONY: db.clean
