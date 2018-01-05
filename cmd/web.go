@@ -3,7 +3,9 @@ package cmd
 import (
 	"gopkg.in/urfave/cli.v1"
 	"gopkg.in/macaron.v1"
+	"github.com/go-macaron/binding"
 	"github.com/srph/failbook/models"
+	"github.com/srph/failbook/routes/posts"
 )
 
 var Web = cli.Command{
@@ -27,6 +29,11 @@ func runWeb(c *cli.Context) error {
 	m.Use(macaron.Static("public"))
 	m.Use(macaron.Renderer())
 	m.Get("/", home)
+	m.Get("/posts", posts.Index)
+	m.Post("/posts", binding.Bind(posts.CreateForm{}), posts.Create)
+	m.Get("/posts/:id", posts.Show)
+	m.Put("/posts/:id", binding.Bind(posts.UpdateForm{}), posts.Update)
+	m.Delete("/posts/:id", posts.Destroy)
 	m.Run()
 	return nil
 }
