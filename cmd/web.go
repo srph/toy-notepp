@@ -4,8 +4,11 @@ import (
 	"gopkg.in/urfave/cli.v1"
 	"gopkg.in/macaron.v1"
 	"github.com/go-macaron/binding"
+	"github.com/go-macaron/session"
 	"github.com/srph/failbook/models"
+	"github.com/srph/failbook/utils/auth"
 	"github.com/srph/failbook/routes/posts"
+	"github.com/srph/failbook/routes/user"
 )
 
 var Web = cli.Command{
@@ -28,12 +31,17 @@ func runWeb(c *cli.Context) error {
 	m.Use(macaron.Recovery())
 	m.Use(macaron.Static("public"))
 	m.Use(macaron.Renderer())
+	m.Use(session.Sessioner())
+	m.Use(auth.Macaron())
 	m.Get("/", home)
 	m.Get("/posts", posts.Index)
 	m.Post("/posts", binding.Bind(posts.CreateForm{}), posts.Create)
 	m.Get("/posts/:id", posts.Show)
 	m.Put("/posts/:id", binding.Bind(posts.UpdateForm{}), posts.Update)
 	m.Delete("/posts/:id", posts.Destroy)
+	m.Get("/me", user.Me)
+	m.Get("/login", binding.Bind(user.LoginForm{}), user.Login)
+	m.Get("/logout", user.Logout)
 	m.Run()
 	return nil
 }
