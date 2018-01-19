@@ -8,8 +8,8 @@ import (
 
 func main() {
 	app := cli.NewApp()
-	app.Name = "Failbook"
-	app.Usage = "Yada yada yada, hello world!"
+	app.Name = "Note++"
+	app.Usage = "A toy note-taking web app"
 	app.Version = "1"
 	app.Commands = []cli.Command{
 		cmd.Web,
