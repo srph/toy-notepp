@@ -1,7 +1,11 @@
 package migrations
 
+import (
+	"github.com/srph/toy-notepp/database"
+)
+
 func MigrateComments() {
-	Instance.MustExec(`
+	database.Instance.MustExec(`
 		CREATE TABLE comments(
 			id INT NOT NULL AUTO_INCREMENT,
 			user_id INT NOT NULL,
@@ -15,5 +19,5 @@ func MigrateComments() {
 }
 
 func DropComments() {
-	Instance.MustExec("DROP TABLE IF EXISTS comments")
+	database.Instance.MustExec("DROP TABLE IF EXISTS comments")
 }

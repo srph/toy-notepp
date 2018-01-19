@@ -1,7 +1,11 @@
 package migrations
 
+import (
+	"github.com/srph/toy-notepp/database"
+)
+
 func MigrateGroupUser() {
-	Instance.MustExec(`
+	database.Instance.MustExec(`
 		CREATE TABLE group_user(
 			id INT NOT NULL AUTO_INCREMENT,
 			user_id INT NOT NULL,
@@ -14,5 +18,5 @@ func MigrateGroupUser() {
 }
 
 func DropGroupUser() {
-	Instance.MustExec("DROP TABLE IF EXISTS group_user")
+	database.Instance.MustExec("DROP TABLE IF EXISTS group_user")
 }

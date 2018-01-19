@@ -1,7 +1,11 @@
 package migrations
 
+import (
+	"github.com/srph/toy-notepp/database"
+)
+
 func MigratePosts() {
-	Instance.MustExec(`
+	database.Instance.MustExec(`
 		CREATE TABLE posts(
 			id INT NOT NULL AUTO_INCREMENT,
 			user_id INT NOT NULL,
@@ -15,5 +19,5 @@ func MigratePosts() {
 }
 
 func DropPosts() {
-	Instance.MustExec("DROP TABLE IF EXISTS posts")
+	database.Instance.MustExec("DROP TABLE IF EXISTS posts")
 }

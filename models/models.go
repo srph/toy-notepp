@@ -17,5 +17,4 @@ func Init() {
 	if err != nil {
 		panic(err)
 	}
-	// defer Instance.Close()
 }
