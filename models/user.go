@@ -10,7 +10,8 @@ import (
 type User struct {
 	ID int
 	Username string
-	Password string
+	Password string `gorm:"-"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
+	Posts []Post
 }

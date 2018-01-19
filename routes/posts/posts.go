@@ -3,7 +3,7 @@ package posts
 import (
 	"gopkg.in/macaron.v1"
 	"github.com/srph/failbook/models"
-	"github.com/srph/failbook/utils"
+	"github.com/srph/failbook/lib/authee"
 )
 
 type CreateForm struct {
@@ -14,18 +14,21 @@ type UpdateForm struct {
 	Content string `binding:"Required"`
 }
 
-func Index(ctx *macaron.Context) {
+func Index(ctx *macaron.Context, auth *authee.Auth) {
 	posts := []models.Post{}
-	models.Instance.Order("id desc").Find(&posts)
+	
+	models.Instance.Model(&auth.User).
+		Order("id desc").
+		Related(&posts)
 
 	ctx.JSON(200, map[string]interface{}{
 		"data": posts,
 	})
 }
 
-func Create(ctx *macaron.Context, form CreateForm) {
+func Create(ctx *macaron.Context, form CreateForm, auth *authee.Auth) {
 	post := models.Post{
-		User: utils.AuthenticatedUser(),
+		User: auth.User,
 		Content: form.Content,
 	}
 

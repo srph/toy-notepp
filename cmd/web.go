@@ -6,7 +6,7 @@ import (
 	"github.com/go-macaron/binding"
 	"github.com/go-macaron/session"
 	"github.com/srph/failbook/models"
-	"github.com/srph/failbook/utils/auth"
+	"github.com/srph/failbook/lib/authee"
 	"github.com/srph/failbook/routes/posts"
 	"github.com/srph/failbook/routes/user"
 )
@@ -32,7 +32,7 @@ func runWeb(c *cli.Context) error {
 	m.Use(macaron.Static("public"))
 	m.Use(macaron.Renderer())
 	m.Use(session.Sessioner())
-	m.Use(auth.Macaron())
+	m.Use(authee.Macaron())
 	m.Get("/", home)
 	m.Get("/posts", posts.Index)
 	m.Post("/posts", binding.Bind(posts.CreateForm{}), posts.Create)

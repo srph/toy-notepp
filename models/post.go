@@ -9,7 +9,7 @@ import (
 
 type Post struct {
 	ID int
-	User User
+	User *User
 	UserID int
 	Content string
 	CreatedAt time.Time

@@ -3,7 +3,7 @@ package seeders
 import (
 	"fmt"
 	"github.com/srph/failbook/database"
-	"github.com/srph/failbook/utils"
+	"github.com/srph/failbook/lib/utils"
 )
 
 func SeedUsers() {
