@@ -1,7 +1,12 @@
 # Note++
 A toy note-taking web app in Go and React.
 
-## Running
+## Requirements
+- Go v1.8
+- Node.js 8 & npm 5
+- MySQL 5.6
+
+## Installing
 If you'd like to fiddle or run the code, feel free to do so.
 
 - Install the dependencies
