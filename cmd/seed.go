@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"gopkg.in/urfave/cli.v1"
-	"github.com/srph/failbook/database/seeders"
+	"github.com/srph/toy-notepp/database/seeders"
 )
 
 var DbSeed = cli.Command{

@@ -2,8 +2,8 @@ package posts
 
 import (
 	"gopkg.in/macaron.v1"
-	"github.com/srph/failbook/models"
-	"github.com/srph/failbook/lib/authee"
+	"github.com/srph/toy-notepp/models"
+	"github.com/srph/toy-notepp/lib/authee"
 )
 
 type CreateForm struct {

@@ -2,7 +2,7 @@ package user
 
 import (
 	"gopkg.in/macaron.v1"
-	"github.com/srph/failbook/lib/authee"
+	"github.com/srph/toy-notepp/lib/authee"
 )
 
 type LoginForm struct {

@@ -2,7 +2,7 @@ package main
 
 import (
 	"gopkg.in/urfave/cli.v1"
-	"github.com/srph/failbook/cmd"
+	"github.com/srph/toy-notepp/cmd"
 	"os"
 )
 

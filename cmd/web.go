@@ -5,10 +5,10 @@ import (
 	"gopkg.in/macaron.v1"
 	"github.com/go-macaron/binding"
 	"github.com/go-macaron/session"
-	"github.com/srph/failbook/models"
-	"github.com/srph/failbook/lib/authee"
-	"github.com/srph/failbook/routes/posts"
-	"github.com/srph/failbook/routes/user"
+	"github.com/srph/toy-notepp/models"
+	"github.com/srph/toy-notepp/lib/authee"
+	"github.com/srph/toy-notepp/routes/posts"
+	"github.com/srph/toy-notepp/routes/user"
 )
 
 var Web = cli.Command{

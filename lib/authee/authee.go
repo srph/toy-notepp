@@ -4,7 +4,7 @@ package authee
 import (
 	"fmt"
 	"errors"
-	"github.com/srph/failbook/models"
+	"github.com/srph/toy-notepp/models"
 	"github.com/go-macaron/session"
 	"golang.org/x/crypto/bcrypt"
 	"gopkg.in/macaron.v1"

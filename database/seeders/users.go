@@ -2,8 +2,8 @@ package seeders
 
 import (
 	"fmt"
-	"github.com/srph/failbook/database"
-	"github.com/srph/failbook/lib/utils"
+	"github.com/srph/toy-notepp/database"
+	"github.com/srph/toy-notepp/lib/utils"
 )
 
 func SeedUsers() {

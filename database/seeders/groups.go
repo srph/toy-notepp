@@ -2,7 +2,7 @@ package seeders
 
 import (
 	"fmt"
-	"github.com/srph/failbook/database"
+	"github.com/srph/toy-notepp/database"
 )
 
 func SeedGroups() {
