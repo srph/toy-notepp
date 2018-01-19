@@ -2,6 +2,7 @@ package models
 
 import(
 	"github.com/jinzhu/gorm"
+	"github.com/srph/lib/settings"
 )
 
 var (
@@ -12,7 +13,13 @@ func Init() {
 	var err error
 	Instance, err = gorm.Open(
 		"mysql",
-		"root@tcp(localhost)/failbook?parseTime=true",
+		fmt.Sprintf(
+			"%s:%s@tcp(%s)/%s?parseTime=true",
+			settings.DatabaseUser,
+			settings.DatabasePassword,
+			settings.DatabaseHost,
+			settings.DatabaseName,
+		),
 	)
 	if err != nil {
 		panic(err)
