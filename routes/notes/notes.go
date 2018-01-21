@@ -18,7 +18,7 @@ func Index(ctx *macaron.Context, auth *authee.Auth) {
 	notes := []models.Note{}
 	
 	models.Instance.Model(&auth.User).
-		Order("id desc").
+		Order("updated_at desc").
 		Related(&notes)
 
 	ctx.JSON(200, map[string]interface{}{
@@ -41,8 +41,12 @@ func Create(ctx *macaron.Context, form CreateForm, auth *authee.Auth) {
 
 func Show(ctx *macaron.Context) {
 	id := ctx.Params(":id")
+	
 	note := models.Note{}
-	models.Instance.Where("id = ?", id).First(&note)
+
+	models.Instance.Where("id = ?", id).
+		Preload("Tags").
+		First(&note)
 
 	ctx.JSON(200, map[string]interface{}{
 		"data": note,

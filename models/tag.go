@@ -12,5 +12,5 @@ type Tag struct {
 	Name string
 	CreatedAt time.Time
 	UpdatedAt time.Time
-	Notes []Note `gorm:many2many:note_tag`
+	Notes []Note `gorm:"many2many:note_tag"`
 }
