@@ -18,7 +18,7 @@ func SeedTags() {
 				name
 			) VALUES(
 				?,
-				?,
+				?
 			)`,
 			id,
 			"tag-" + string(id),
