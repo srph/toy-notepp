@@ -1,8 +1,9 @@
 package models
 
 import(
+	"fmt"
 	"github.com/jinzhu/gorm"
-	"github.com/srph/lib/settings"
+	"github.com/srph/toy-notepp/lib/settings"
 )
 
 var (

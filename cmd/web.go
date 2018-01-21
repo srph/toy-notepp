@@ -7,7 +7,7 @@ import (
 	"github.com/go-macaron/session"
 	"github.com/srph/toy-notepp/models"
 	"github.com/srph/toy-notepp/lib/authee"
-	"github.com/srph/toy-notepp/routes/posts"
+	"github.com/srph/toy-notepp/routes/notes"
 	"github.com/srph/toy-notepp/routes/user"
 )
 
@@ -34,11 +34,11 @@ func runWeb(c *cli.Context) error {
 	m.Use(session.Sessioner())
 	m.Use(authee.Macaron())
 	m.Get("/", home)
-	m.Get("/posts", posts.Index)
-	m.Post("/posts", binding.Bind(posts.CreateForm{}), posts.Create)
-	m.Get("/posts/:id", posts.Show)
-	m.Put("/posts/:id", binding.Bind(posts.UpdateForm{}), posts.Update)
-	m.Delete("/posts/:id", posts.Destroy)
+	m.Get("/notes", notes.Index)
+	m.Post("/notes", binding.Bind(notes.CreateForm{}), notes.Create)
+	m.Get("/notes/:id", notes.Show)
+	m.Put("/notes/:id", binding.Bind(notes.UpdateForm{}), notes.Update)
+	m.Delete("/notes/:id", notes.Destroy)
 	m.Get("/me", user.Me)
 	m.Get("/login", binding.Bind(user.LoginForm{}), user.Login)
 	m.Get("/logout", user.Logout)

@@ -7,11 +7,10 @@ import (
 	// "github.com/jinzhu/gorm"
 )
 
-type User struct {
+type Tag struct {
 	ID int
-	Username string
-	Password string `gorm:"-"`
+	Name string
 	CreatedAt time.Time
 	UpdatedAt time.Time
-	Notes []Note
+	Notes []Note `gorm:many2many:note_tag`
 }

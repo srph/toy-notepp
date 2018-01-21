@@ -4,30 +4,27 @@ import (
 	"github.com/srph/toy-notepp/database"
 )
 
-func SeedComments() {
+func SeedNotes() {
 	database.Instance.MustExec(
-		"TRUNCATE TABLE comments",
+		"TRUNCATE TABLE notes",
 	)
 
-	for i := 0; i < POST_COUNT; i++ {
+	for i := 0; i < NOTE_COUNT; i++ {
 		id := i + 1
 
 		database.Instance.MustExec(`
-			INSERT INTO comments(
+			INSERT INTO notes(
 				id,
-				post_id,
 				user_id,
 				content
 			) VALUES(
 				?,
 				?,
-				?,
 				?
 			)`,
 			id,
-			id,
-			(i % USER_COUNT) + 1,
-			"bla i'm a cool comment",
+			(i % (USER_COUNT + 1)),
+			"bla i'm a cool post",
 		)
 	}
 }

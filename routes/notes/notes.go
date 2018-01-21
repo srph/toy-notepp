@@ -1,4 +1,4 @@
-package posts
+package notes
 
 import (
 	"gopkg.in/macaron.v1"
@@ -15,58 +15,58 @@ type UpdateForm struct {
 }
 
 func Index(ctx *macaron.Context, auth *authee.Auth) {
-	posts := []models.Post{}
+	notes := []models.Note{}
 	
 	models.Instance.Model(&auth.User).
 		Order("id desc").
-		Related(&posts)
+		Related(&notes)
 
 	ctx.JSON(200, map[string]interface{}{
-		"data": posts,
+		"data": notes,
 	})
 }
 
 func Create(ctx *macaron.Context, form CreateForm, auth *authee.Auth) {
-	post := models.Post{
+	note := models.Note{
 		User: auth.User,
 		Content: form.Content,
 	}
 
-	models.Instance.Create(&post)
+	models.Instance.Create(&note)
 
 	ctx.JSON(200, map[string]interface{}{
-		"data": post,
+		"data": note,
 	})
 }
 
 func Show(ctx *macaron.Context) {
 	id := ctx.Params(":id")
-	post := models.Post{}
-	models.Instance.Where("id = ?", id).First(&post)
+	note := models.Note{}
+	models.Instance.Where("id = ?", id).First(&note)
 
 	ctx.JSON(200, map[string]interface{}{
-		"data": post,
+		"data": note,
 	})
 }
 
 func Update(ctx *macaron.Context, form UpdateForm) {
 	id := ctx.Params(":id")
 
-	post := models.Post{}
-	models.Instance.Where("id = ?", id).First(&post)
-	models.Instance.Model(&post).Update("content", form.Content)
+	note := models.Note{}
+	models.Instance.Where("id = ?", id).First(&note)
+	models.Instance.Model(&note).Update("content", form.Content)
 
 	ctx.JSON(200, map[string]interface{}{
-		"data": post,
+		"data": note,
 	})
 }
 
 func Destroy(ctx *macaron.Context) {
 	id := ctx.Params(":id")	
 
-	post := models.Post{}
-	models.Instance.Where("id = ?", id).First(&post)
-	models.Instance.Delete(&post)
+	note := models.Note{}
+	models.Instance.Where("id = ?", id).First(&note)
+	models.Instance.Delete(&note)
 
 	ctx.JSON(200, map[string]interface{}{})
 }

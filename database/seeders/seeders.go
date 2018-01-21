@@ -2,6 +2,6 @@ package seeders
 
 const (
 	USER_COUNT = 5
-	GROUP_COUNT = 5
-	POST_COUNT = 50
+	NOTE_COUNT = 50
+	TAG_COUNT = 5
 )

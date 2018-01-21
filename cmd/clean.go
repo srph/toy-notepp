@@ -7,15 +7,14 @@ import (
 
 var DbClean = cli.Command{
 	Name: "db:clean",
-	Usage: "Run migrations",
+	Usage: "Drop migrations",
 	Action: runDbClean,
 }
 
 func runDbClean(c *cli.Context) error {
 	migrations.DropUsers()
-	migrations.DropPosts()
-	migrations.DropComments()
-	migrations.DropGroups()
-	migrations.DropGroupUser()
+	migrations.DropNotes()
+	migrations.DropTags()
+	migrations.DropNoteTag()
 	return nil
 }

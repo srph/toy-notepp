@@ -7,11 +7,12 @@ import (
 	// "github.com/jinzhu/gorm"
 )
 
-type Post struct {
+type Note struct {
 	ID int
 	User *User
 	UserID int
 	Content string
 	CreatedAt time.Time
 	UpdatedAt time.Time
+	Tags []Tag `gorm:many2many:note_tag`
 }

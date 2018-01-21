@@ -15,8 +15,7 @@ var DbSeed = cli.Command{
 func runSeeders(c *cli.Context) error {
 	database.Init()
 	seeders.SeedUsers()
-	seeders.SeedPosts()
-	seeders.SeedComments()
-	seeders.SeedGroups()
+	seeders.SeedNotes()
+	seeders.SeedTags()
 	return nil
 }

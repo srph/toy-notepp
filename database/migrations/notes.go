@@ -4,12 +4,11 @@ import (
 	"github.com/srph/toy-notepp/database"
 )
 
-func MigratePosts() {
+func MigrateNotes() {
 	database.Instance.MustExec(`
-		CREATE TABLE posts(
+		CREATE TABLE notes(
 			id INT NOT NULL AUTO_INCREMENT,
 			user_id INT NOT NULL,
-			group_id INT,
 			content TEXT NOT NULL,
 			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 			updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -18,6 +17,6 @@ func MigratePosts() {
 	`)
 }
 
-func DropPosts() {
-	database.Instance.MustExec("DROP TABLE IF EXISTS posts")
+func DropNotes() {
+	database.Instance.MustExec("DROP TABLE IF EXISTS notes")
 }
