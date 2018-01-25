@@ -1,6 +1,6 @@
 import {createStore, combineReducers} from 'redux';
-import auth from './auth';
+import * as auth from './auth';
 
 export default createStore(combineReducers({
-  auth
+  auth: auth.reducer
 }))

@@ -1,3 +1,4 @@
+import React from 'react'
 import {Route, Switch} from 'react-router'
 import App from '@/views/app'
 import AppMain from '@/views/app.main'
@@ -6,7 +7,7 @@ import AppLogin from '@/views/app.login'
 
 export default (
   <App>
-    <Route path="/login" component={Login} />
+    <Route path="/login" component={AppLogin} />
     
     <AppMain>
       <Route path="/" component={AppHome} />

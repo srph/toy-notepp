@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default class App extends React.Component {
+export default class AppLogin extends React.Component {
   render() {
     return (
-      this.props.children
+      <div />
     )
   }
 }

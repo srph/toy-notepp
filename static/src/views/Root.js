@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Helmet from 'react-helmet';
 
-import Router from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import routes from '@/routes';
 import history from '@/history';
 
