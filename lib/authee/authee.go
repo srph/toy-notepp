@@ -7,6 +7,7 @@ import (
 	"github.com/srph/toy-notepp/models"
 	"github.com/go-macaron/session"
 	"golang.org/x/crypto/bcrypt"
+	// "encoding/json"
 	"gopkg.in/macaron.v1"
 )
 
@@ -67,7 +68,9 @@ func Macaron() macaron.Handler {
 		}
 
 		ctx.Map(&auth)
-
+		// b, _ := json.Marshal(auth.User)
+		// ctx.Data["Auth"] = string(b)
+		ctx.Data["Auth"] = auth.User
 		ctx.Next()
 	}
 }

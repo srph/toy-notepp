@@ -4,9 +4,6 @@ import(
 	"fmt"
 	"github.com/jinzhu/gorm"
 	"github.com/srph/toy-notepp/lib/settings"
-
-	"reflect"
-	"github.com/serenize/snaker"
 )
 
 var (
