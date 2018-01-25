@@ -2,8 +2,10 @@ package notes
 
 import (
 	"gopkg.in/macaron.v1"
+	"strings"
 	"github.com/srph/toy-notepp/models"
 	"github.com/srph/toy-notepp/lib/authee"
+	// "github.com/srph/toy-notepp/lib/utils"
 )
 
 type CreateForm struct {
@@ -12,6 +14,11 @@ type CreateForm struct {
 
 type UpdateForm struct {
 	Content string `binding:"Required"`
+	Tags []string
+}
+
+type DeleteForm struct {
+	Force bool
 }
 
 func Index(ctx *macaron.Context, auth *authee.Auth) {
@@ -57,20 +64,44 @@ func Update(ctx *macaron.Context, form UpdateForm) {
 	id := ctx.Params(":id")
 
 	note := models.Note{}
-	models.Instance.Where("id = ?", id).First(&note)
-	models.Instance.Model(&note).Update("content", form.Content)
+
+	models.Instance.Where("id = ?", id).
+		Preload("Tags").
+		First(&note)
+
+	models.Instance.Save(&note)
+
+	// Blow away all existing tags
+	models.Instance.Model(&note).
+		Association("Tags").
+		Clear()
+
+	// Create all tags
+	var tags []models.Tag
+	for _, name := range form.Tags {
+		tag := models.Tag{}
+		models.Instance.FirstOrCreate(&tag, models.Tag{Name: strings.Trim(name, " ") })
+		tags = append(tags, tag)
+	}
+
+	// Relate all tags
+	models.Instance.Model(&note).
+		Association("Tags").
+		Append(tags)
 
 	ctx.JSON(200, map[string]interface{}{
 		"data": note,
 	})
 }
 
-func Destroy(ctx *macaron.Context) {
-	id := ctx.Params(":id")	
+func Destroy(ctx *macaron.Context, form DeleteForm) {
+	id := ctx.Params(":id")
 
-	note := models.Note{}
-	models.Instance.Where("id = ?", id).First(&note)
-	models.Instance.Delete(&note)
+	if (form.Force) {
+		models.Instance.Where("id = ?", id).Delete(models.Note{})
+	} else {
+		models.Instance.Unscoped().Where("id = ?", id).Delete(models.Note{})
+	}
 
 	ctx.JSON(200, map[string]interface{}{})
 }

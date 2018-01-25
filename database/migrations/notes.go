@@ -12,6 +12,7 @@ func MigrateNotes() {
 			content TEXT NOT NULL,
 			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 			updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+			deleted_at TIMESTAMP NULL DEFAULT NULL,
 			PRIMARY KEY (id)
 		)
 	`)
