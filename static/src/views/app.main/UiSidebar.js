@@ -7,7 +7,9 @@ function UiSidebar({children}) {
       height="100%"
       width="160px"
       paddingTop="40px"
-      backgroundColor="var(--color-dark-gray)"
+      paddingLeft="8px"
+      paddingRight="8px"
+      backgroundColor="var(--color-black)"
       overflowX="auto">
       {children}
     </Div>

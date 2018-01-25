@@ -18,14 +18,39 @@ class NotePane extends React.Component {
           overflowY="auto">
           {new Array(10).fill(null).map((note, i) =>
             <A
+              position="relative"
               display="flex"
               alignItems="center"
               height="120px"
               paddingTop="16px"
               paddingLeft="16px"
+              opacity={i === 0 ? '1': '0.7'}
               width="100%"
               textDecoration="none"
+              css={{
+                ':hover': {
+                  opacity: '1'
+                }
+              }}
+              key={i}
               href="#">
+              {i === 0 && <Div
+                position="absolute"
+                left="0"
+                top="0"
+                bottom="0"
+                backgroundColor="var(--color-blue)"
+                height="100%"
+                width="4px" />}
+
+              {i === 0 && <Div
+                position="absolute"
+                left="56px"
+                bottom="-1px"
+                backgroundColor="var(--color-blue)"
+                height="1px"
+                width="50%" />}
+
               <Div
                 alignSelf="flex-start"
                 flexShrink="0"
@@ -38,7 +63,7 @@ class NotePane extends React.Component {
                   1h
                 </Div>
 
-                {i < 2 && <Div color="var(--color-red)">
+                {i < 2 && <Div color="var(--color-blue)">
                   <i className="fa fa-thumb-tack" />
                 </Div>}
               </Div>

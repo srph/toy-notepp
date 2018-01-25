@@ -12,7 +12,7 @@ export default class AppMain extends React.Component {
         height="100vh"
         width="100%">
         <UiSidebar>
-          <UiSidebarLink icon="book" text="Notebook" />
+          <UiSidebarLink icon="book" text="Notebook" active />
           <UiSidebarLink icon="trash" text="Trash" />
         </UiSidebar>
 
