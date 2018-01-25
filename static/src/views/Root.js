@@ -8,6 +8,11 @@ import history from '@/history';
 import {Provider} from 'react-redux';
 import store from '@/store';
 
+import 'normalize.css'
+import 'font-awesome/css/font-awesome.css'
+import '@/components/variables.css'
+import '@/components/basic.css'
+
 class Root extends Component {
   render() {
     return (

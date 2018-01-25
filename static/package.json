@@ -5,15 +5,18 @@
   "dependencies": {
     "autoprefixer": "7.1.6",
     "axios": "^0.17.1",
+    "font-awesome": "^4.7.0",
     "glamor": "^2.20.40",
     "glamorous": "^4.11.4",
     "immer": "^0.8.5",
     "jest": "20.0.4",
     "linkstate": "^1.1.0",
+    "normalize.css": "^7.0.0",
     "promise": "8.0.1",
     "raf": "3.4.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-fontawesome": "^1.6.1",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
@@ -25,10 +28,11 @@
     "start": "parcel public/index.html"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.38",
-    "@babel/preset-env": "^7.0.0-beta.38",
-    "@babel/preset-react": "^7.0.0-beta.38",
+    "babel-core": "^6.24.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-module-alias": "^1.6.0",
-    "parcel-bundler": "^1.2.1"
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "parcel-bundler": "^1.5.0"
   }
 }
