@@ -47,7 +47,6 @@ func runWeb(c *cli.Context) error {
 		m.Get("/login", binding.Bind(user.LoginForm{}), user.Login)
 		m.Get("/logout", user.Logout)
 	})
-	m.Get("/", home.Index)
 	m.Run()
 	return nil
 }

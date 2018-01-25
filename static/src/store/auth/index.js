@@ -1,5 +1,5 @@
 import immer from 'immer'
-import actions from './actions'
+// import  from './actions'
 
 const init = {
   data: {},
@@ -33,4 +33,4 @@ export function reducer(state = init, action) {
   })
 }
 
-export actions
+export * as actions from './actions'

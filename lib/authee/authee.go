@@ -68,9 +68,6 @@ func Macaron() macaron.Handler {
 		}
 
 		ctx.Map(&auth)
-		// b, _ := json.Marshal(auth.User)
-		// ctx.Data["Auth"] = string(b)
-		ctx.Data["Auth"] = auth.User
 		ctx.Next()
 	}
 }
