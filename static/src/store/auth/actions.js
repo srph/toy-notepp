@@ -1,13 +1,38 @@
 import axios from 'axios'
+import history from '@/history'
+
+export function init() {
+  return (dispatch, getState) => {
+    return axios.get('/me')
+      .then(data => {
+        dispatch({
+          type: 'auth:init!',
+          payload: data
+        })
+
+        history.push('/')
+      })
+      .catch(err => {
+        dispatch({
+          type: 'auth:init',
+          payload: null
+        })
+      })
+  }
+}
 
 export function login(credentials) {
-  return function(getState, dispatch) {
+  return (dispatch, getState) => {
+    if (getState().auth.credentials) {
+      return
+    }
+
     dispatch({
       type: 'auth:login!',
       payload: credentials
     })
 
-    axios.post('/api/login', credentails)
+    return axios.post('/login', credentials)
       .then(data => {
         dispatch({
           type: 'auth:login.success',
@@ -20,5 +45,12 @@ export function login(credentials) {
           payload: { error: err.response.message }
         })
       })
+  }
+}
+
+export function logout() {
+  return (dispatch, getState) => {
+    dispatch({ type: 'auth:logout' })
+    history.push('/login')
   }
 }

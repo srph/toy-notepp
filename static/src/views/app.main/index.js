@@ -1,18 +1,19 @@
 import React from 'react'
 import {Div, A} from 'glamorous'
 import NotePane from './NotePane'
+import Link from '@/components/Link'
 
 class AppMain extends React.Component {
   render() {
     return (
       <UiWrapper>
         <UiSidebar>
-          <UiSidebarLink icon="book" text="Notebook" active />
-          <UiSidebarLink icon="trash" text="Trash" />
+          <UiSidebarLink to="/" icon="book" text="Notebook" active />
+          <UiSidebarLink to="/trash" icon="trash" text="Trash" />
         </UiSidebar>
 
         <NotePane />
-      </UuiWrapper>
+      </UiWrapper>
     )
   }
 }
@@ -41,9 +42,9 @@ function UiSidebar({children}) {
   )
 }
 
-function UiSidebarLink({link, icon, text, active}) {
+function UiSidebarLink({to, icon, text, active}) {
   return (
-    <A href="#"
+    <Link to={to}
       display="flex"
       marginBottom="8px"
       alignItems="center"
@@ -64,7 +65,7 @@ function UiSidebarLink({link, icon, text, active}) {
         <i className={`fa fa-${icon}`} />
       </Div>
       <span>{text}</span>
-    </A>
+    </Link>
   )
 }
 

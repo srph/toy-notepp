@@ -1,12 +1,15 @@
 {
   "presets": [
-    "env",
-    "react"
+    ["env", {
+      "modules": false
+    }],
+    "stage-1",
+    "react",
   ],
   "plugins": [
     ["module-alias", [
-      { "src": "./src", "expose": "@" }
+      { "src": "./src", "expose": "@" },
     ]],
-    "add-module-exports"
+    "styled-jsx/babel"
   ]
 }
